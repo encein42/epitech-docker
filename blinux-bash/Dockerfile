@@ -1,5 +1,5 @@
-FROM casimir/blinux:latest
-MAINTAINER Martin Chaine <chaine_a@epitech.eu>
+FROM ascam/blinux:latest
+MAINTAINER Luca Ungaro <luca.ungaro@epitech.eu>
 
 RUN zypper -n install \
     emacs             \

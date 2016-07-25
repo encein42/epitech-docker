@@ -1,5 +1,5 @@
 FROM opensuse:13.2
-MAINTAINER Martin Chaine <chaine_a@epitech.eu>
+MAINTAINER Luca Ungaro	<luca.ungaro@epitech.eu>
 
 RUN zypper --gpg-auto-import-keys -n update
 RUN zypper -n install \
@@ -7,10 +7,11 @@ RUN zypper -n install \
     gcc gcc-c++       \
     libX11-devel      \
     libXext-devel     \
-    make
+    make cmake
 RUN zypper -n install \
     ksh               \
     tcsh              \
+    dash              \
     zsh
 RUN zypper -n install          \
     libSDL-devel libSDL2-devel \
@@ -23,9 +24,15 @@ RUN zypper -n install \
     valgrind          \
     zip unzip
 
-ADD minilibx /usr/src/minilibx
-RUN make -C /usr/src/minilibx install
-RUN make -C /usr/src/minilibx clean
+RUN useradd -md /home/astek astek
+USER astek
+WORKDIR /home/astek/workspace
 
-ADD .bashrc /etc/skel/.bashrc
+ADD liblapin /home/astek/workspace/liblapin
+RUN cd /home/astek/workspace/liblapin \
+    HOME=/home/astek/		      \
+    ./install.sh
+ADD config/* /home/astek/
+
+#ADD .bashrc /etc/skel/.bashrc
 ADD bugs /usr/bin/bugs
