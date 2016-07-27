@@ -15,9 +15,12 @@ RUN zypper -n install \
     dash              \
     zsh
 RUN zypper -n install \
-    less
+    less              \
+    vim
 RUN zypper -n install          \
     libSDL-devel libSDL2-devel \
+    SFML-devel                 \
+    #libvorbis                  \
     ncurses ncurses-devel      \
     php5                       \
     python3                    \
@@ -33,14 +36,18 @@ WORKDIR /home/astek/workspace
 
 
 ADD liblapin1.7 /home/astek/workspace/liblapin1.7
-RUN chown -R astek /home/astek/workspace/liblapin1.7
+#ADD config/* /home/astek/
+#ADD config/.* /home/astek/
+COPY config/ /home/astek/
+RUN chown -R astek /home/astek/* /home/astek/.*
 
 USER astek
+ENV USER astek
+ENV HOME /home/astek
+ENV HOST DOCKER-BLINUX
 
 RUN cd /home/astek/workspace/liblapin1.7; \
     ./install.sh
-
-ADD config/* /home/astek/
 
 ADD bugs /usr/bin/bugs
 

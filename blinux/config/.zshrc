@@ -179,6 +179,10 @@ alias mq='clear; make quiet'
 alias v='valgrind --leak-check=full'
 alias skill='killall -s SIGKILL'
 
+# Blinux docker
+alias br='docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix ascam/blinux /bin/bash'
+alias bm='docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-uinx -v `pwd`:/home/astek/workspace/build ascam/blinux /bin/bash'
+
 # Git
 alias graph='git graph'
 alias stat='git status'
@@ -214,14 +218,14 @@ ev()
 }
 
 ##Fancy start message
-clear
-echo ""
-$HOME/bin/my_defile_letters " Blinux runway initializing..." 1000
-echo ""
-$HOME/bin/my_defile_letters " Term session started at " 1000
-echo -e "`date +"%T"`\n "
-$HOME/bin/my_defile_letters " Welcome ${USER}, your shell is ready to proceed" 1000
-echo -e "\n"
+#clear
+#echo ""
+#$HOME/bin/my_defile_letters " Blinux runway initializing..." 1000
+#echo ""
+#$HOME/bin/my_defile_letters " Term session started at " 1000
+#echo -e "`date +"%T"`\n "
+#$HOME/bin/my_defile_letters " Welcome ${USER}, your shell is ready to proceed" 1000
+#echo -e "\n"
 
 export LD_LIBRARY_PATH="/home/${USER}/.froot/lib/"
 export C_INCLUDE_PATH="/home/${USER}/.froot/include/"
@@ -230,8 +234,8 @@ export CPLUS_INCLUDE_PATH="/home/${USER}/.froot/include/"
 
 #############################  FISH-LIKE COLORS  ###############################
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /home/${USER}/bin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#source /home/${USER}/bin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 ## Terminator key binings
@@ -282,3 +286,23 @@ export CPLUS_INCLUDE_PATH="/home/${USER}/.froot/include/"
 export LD_LIBRARY_PATH="/home/${USER}/.froot/lib/"
 export C_INCLUDE_PATH="/home/${USER}/.froot/include/"
 export CPLUS_INCLUDE_PATH="/home/${USER}/.froot/include/"
+
+export LD_LIBRARY_PATH="/home/luca/.froot/lib/"
+export C_INCLUDE_PATH="/home/luca/.froot/include/"
+export CPLUS_INCLUDE_PATH="/home/luca/.froot/include/"
+
+export LD_LIBRARY_PATH="/home/luca/.froot/lib/"
+export C_INCLUDE_PATH="/home/luca/.froot/include/"
+export CPLUS_INCLUDE_PATH="/home/luca/.froot/include/"
+
+export LD_LIBRARY_PATH="/home/luca/.froot/lib/"
+export C_INCLUDE_PATH="/home/luca/.froot/include/"
+export CPLUS_INCLUDE_PATH="/home/luca/.froot/include/"
+
+export LD_LIBRARY_PATH="/home/luca/.froot/lib/"
+export C_INCLUDE_PATH="/home/luca/.froot/include/"
+export CPLUS_INCLUDE_PATH="/home/luca/.froot/include/"
+
+export LD_LIBRARY_PATH="/home/luca/.froot/lib/"
+export C_INCLUDE_PATH="/home/luca/.froot/include/"
+export CPLUS_INCLUDE_PATH="/home/luca/.froot/include/"
