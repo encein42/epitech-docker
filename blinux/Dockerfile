@@ -35,7 +35,7 @@ RUN useradd -md /home/astek astek
 WORKDIR /home/astek/workspace
 
 
-ADD liblapin1.7 /home/astek/workspace/liblapin1.7
+ADD liblapin1.7 /home/astek/liblapin1.7
 #ADD config/* /home/astek/
 #ADD config/.* /home/astek/
 COPY config/ /home/astek/
@@ -46,7 +46,7 @@ ENV USER astek
 ENV HOME /home/astek
 ENV HOST DOCKER-BLINUX
 
-RUN cd /home/astek/workspace/liblapin1.7; \
+RUN cd /home/astek/liblapin1.7; \
     ./install.sh
 
 ADD bugs /usr/bin/bugs
