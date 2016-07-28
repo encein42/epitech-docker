@@ -158,8 +158,8 @@ export LIBGL_ALWAYS_SOFTWARE=true
 
 ##System customization
 export PATH="$PATH:$HOME/bin"
-export PAGER='vimpager'
-alias less="$PAGER"
+export PAGER='less'
+#alias less="$PAGER"
 
 ## Aliases persos
 

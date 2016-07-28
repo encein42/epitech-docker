@@ -20,7 +20,7 @@ RUN zypper -n install \
 RUN zypper -n install          \
     libSDL-devel libSDL2-devel \
     SFML-devel                 \
-    #libvorbis                  \
+    #libvorbis libvorbisfile    \
     ncurses ncurses-devel      \
     php5                       \
     python3                    \
