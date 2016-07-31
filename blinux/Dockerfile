@@ -15,6 +15,8 @@ RUN zypper -n install \
     dash              \
     zsh
 RUN zypper -n install \
+    sudo              \
+    man 	      \
     less              \
     vim
 RUN zypper -n install          \
@@ -31,22 +33,27 @@ RUN zypper -n install \
     zip unzip
 
 
-RUN useradd -md /home/astek astek
-WORKDIR /home/astek/workspace
+ENV USERNAME astek
+RUN useradd -md /home/$USERNAME $USERNAME &&			           \
+    usermod --shell /bin/zsh $USERNAME && 				   \
+    #usermod -aG sudo $USERNAME && 					   \
+    echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/$USERNAME && \
+    chmod 0440 /etc/sudoers.d/$USERNAME
+WORKDIR /home/$USERNAME/workspace
 
 
-ADD liblapin1.7 /home/astek/liblapin1.7
-#ADD config/* /home/astek/
-#ADD config/.* /home/astek/
-COPY config/ /home/astek/
-RUN chown -R astek /home/astek/* /home/astek/.*
+ADD liblapin1.7 /home/$USERNAME/liblapin1.7
+#ADD config/* /home/$USERNAME/
+#ADD config/.* /home/$USERNAME/
+COPY config/ /home/$USERNAME/
+RUN chown -R $USERNAME /home/$USERNAME/* /home/$USERNAME/.*
 
-USER astek
-ENV USER astek
-ENV HOME /home/astek
+USER $USERNAME
+ENV USER $USERNAME
+ENV HOME /home/$USERNAME
 ENV HOST DOCKER-BLINUX
 
-RUN cd /home/astek/liblapin1.7; \
+RUN cd /home/$USERNAME/liblapin1.7; \
     ./install.sh
 
 ADD bugs /usr/bin/bugs
